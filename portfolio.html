@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sanjeev | Web Developer for Resorts & Hospitality</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ocean: #0B4252;
+    --ocean-mid: #1A6678;
+    --ocean-light: #E8F4F8;
+    --gold: #B8882A;
+    --gold-light: #F5EDD8;
+    --cream: #FAF8F4;
+    --sand: #EDE7D9;
+    --text-dark: #1C2B30;
+    --text-mid: #4A6370;
+    --text-light: #7A9AA8;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(11,66,82,0.96);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--white);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span { color: #C9A84C; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  nav ul a:hover { color: #C9A84C; }
+  .nav-cta {
+    background: #C9A84C; color: var(--ocean) !important;
+    padding: 0.5rem 1.25rem; border-radius: 2px; font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: #B8882A; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--ocean) 0%, #0D5468 55%, #1A7A6E 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 8rem 5% 5rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content { position: relative; max-width: 700px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+    color: #C9A84C; padding: 0.4rem 1rem; border-radius: 2px;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 600; line-height: 1.12;
+    color: var(--white); margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: #C9A84C; }
+  .hero p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.72);
+    line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block; background: #C9A84C; color: var(--ocean);
+    padding: 0.875rem 2rem; font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; border-radius: 2px; letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--white); }
+  .btn-outline {
+    display: inline-block; border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white); padding: 0.875rem 2rem;
+    font-size: 0.95rem; text-decoration: none; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.9); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; color: #C9A84C;
+  }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 5%; }
+  .section-tag {
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600; line-height: 1.2; color: var(--ocean);
+    max-width: 600px; margin-bottom: 1rem;
+  }
+  .section-subtitle {
+    font-size: 1rem; color: var(--text-mid); line-height: 1.7;
+    max-width: 520px; margin-bottom: 3rem;
+  }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 1rem;
+  }
+  .service-card {
+    border: 1px solid #E0D9CE; border-radius: 4px;
+    padding: 2.25rem 2rem; background: var(--cream);
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 4px;
+    background: var(--ocean-light); display: flex;
+    align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .service-icon svg { width: 24px; height: 24px; stroke: var(--ocean); }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--ocean);
+    margin-bottom: 0.75rem;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+  .service-includes {
+    margin-top: 1.25rem; list-style: none; display: flex;
+    flex-direction: column; gap: 0.5rem;
+  }
+  .service-includes li {
+    font-size: 0.85rem; color: var(--text-dark);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .service-includes li::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%; flex-shrink: 0;
+  }
+  .price-tag {
+    margin-top: 1.5rem; padding-top: 1.25rem;
+    border-top: 1px solid #E0D9CE;
+    font-size: 0.8rem; color: var(--text-light);
+  }
+  .price-tag strong {
+    font-size: 1.25rem; color: var(--ocean); font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* WHY ME */
+  .why-me { background: var(--sand); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem; margin-top: 0.5rem;
+  }
+  .why-card {
+    background: var(--white); border-radius: 4px;
+    padding: 1.75rem 1.5rem; border: 1px solid #E0D9CE;
+  }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 600;
+    color: rgba(11,66,82,0.1); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .why-card h4 {
+    font-size: 1rem; font-weight: 500; color: var(--ocean);
+    margin-bottom: 0.5rem;
+  }
+  .why-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--white); }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .portfolio-card {
+    border-radius: 4px; overflow: hidden; border: 1px solid #E0D9CE;
+  }
+  .portfolio-img {
+    height: 200px; background: linear-gradient(135deg, var(--ocean) 0%, #1A7A6E 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .portfolio-img-2 { background: linear-gradient(135deg, #2C5F6E 0%, #0B4252 100%); }
+  .portfolio-img-3 { background: linear-gradient(135deg, #1A6678 0%, #2C856E 100%); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.3); display: flex;
+    align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-overlay a {
+    background: var(--white); color: var(--ocean);
+    padding: 0.5rem 1.25rem; border-radius: 2px;
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+  }
+  .portfolio-mock {
+    display: flex; flex-direction: column; gap: 6px; width: 65%;
+  }
+  .mock-bar {
+    height: 10px; background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+  }
+  .mock-bar.short { width: 60%; }
+  .mock-bar.shorter { width: 40%; }
+  .portfolio-info { padding: 1.25rem 1.25rem 1.5rem; background: var(--cream); }
+  .portfolio-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.35rem;
+  }
+  .portfolio-info p { font-size: 0.85rem; color: var(--text-mid); }
+  .portfolio-tags { display: flex; gap: 0.4rem; margin-top: 0.75rem; flex-wrap: wrap; }
+  .tag {
+    background: var(--ocean-light); color: var(--ocean-mid);
+    font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 2px;
+  }
+
+  /* PROCESS */
+  .process { background: var(--ocean); padding: 5rem 5%; }
+  .process .section-title { color: var(--white); max-width: 500px; }
+  .process .section-tag { color: #C9A84C; }
+  .process .section-subtitle { color: rgba(255,255,255,0.6); }
+  .steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; margin-top: 1rem;
+  }
+  .step { position: relative; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 600;
+    color: rgba(255,255,255,0.08); line-height: 1; margin-bottom: 0.5rem;
+  }
+  .step h4 { font-size: 1rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+  .step-dot {
+    width: 6px; height: 6px; background: #C9A84C;
+    border-radius: 50%; margin-bottom: 0.75rem;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--cream); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.8rem; color: var(--text-mid);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 0.75rem 1rem; border: 1px solid #D5CBBB;
+    border-radius: 2px; background: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    color: var(--text-dark); outline: none; transition: border 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--ocean);
+  }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+  .btn-submit {
+    background: var(--ocean); color: var(--white); border: none;
+    padding: 0.875rem 2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; font-weight: 500; cursor: pointer;
+    border-radius: 2px; transition: background 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn-submit:hover { background: var(--ocean-mid); }
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem; font-weight: 600; color: var(--ocean); margin-bottom: 0.75rem;
+  }
+  .contact-info p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none; color: var(--text-dark); font-size: 0.9rem;
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px; background: var(--ocean-light);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-link-icon svg { width: 16px; height: 16px; stroke: var(--ocean); }
+  .guarantee {
+    margin-top: 2rem; padding: 1.25rem;
+    background: var(--gold-light); border-left: 3px solid var(--gold);
+    border-radius: 2px;
+  }
+  .guarantee p { font-size: 0.875rem; color: var(--text-dark); line-height: 1.65; }
+  .guarantee strong { color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem 5%;
+    font-size: 0.85rem;
+  }
+  footer span { color: #C9A84C; }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .fade-up:nth-child(2) { animation-delay: 0.12s; }
+  .fade-up:nth-child(3) { animation-delay: 0.24s; }
+  .fade-up:nth-child(4) { animation-delay: 0.36s; }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sanjeev<span>.</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge fade-up">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Available for New Projects — Kerala & Remote
+    </div>
+    <h1 class="fade-up">Your Resort Deserves a<br /><em>Website That Books.</em></h1>
+    <p class="fade-up">I build and maintain professional websites for resorts, homestays, and hospitality businesses — so your guests find you online and trust what they see.</p>
+    <div class="hero-actions fade-up">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#portfolio" class="btn-outline">See My Work</a>
+    </div>
+    <div class="hero-stats fade-up">
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Websites Built</div>
+      </div>
+      <div>
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Response Time</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag">What I Offer</div>
+  <h2 class="section-title">Services Built for Hospitality Businesses</h2>
+  <p class="section-subtitle">Whether your website is outdated, broken, or doesn't exist yet — I have a solution that fits your budget and brings results.</p>
+
+  <!-- Resort Special Highlight -->
+  <div style="background: linear-gradient(135deg, #0B4252 0%, #1A7A6E 100%); border-radius: 4px; padding: 2rem 2.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+    <div>
+      <div style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84C; margin-bottom:0.5rem;">⭐ Most Popular</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:#fff; margin-bottom:0.5rem;">Special Resort Website Package</h3>
+      <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); max-width:500px;">Everything a resort needs in one affordable package — modern homepage, gallery, rooms section, WhatsApp booking button, contact form, Google Maps &amp; mobile responsive design.</p>
+    </div>
+    <div style="text-align:right; flex-shrink:0;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:600; color:#C9A84C;">₹3,999</div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.5);">one-time · full package</div>
+      <a href="#contact" style="display:inline-block; margin-top:0.75rem; background:#C9A84C; color:#0B4252; padding:0.6rem 1.5rem; border-radius:2px; text-decoration:none; font-size:0.875rem; font-weight:500;">Book This →</a>
+    </div>
+  </div>
+
+  <div class="services-grid">
+    <!-- New Websites -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <h3>New Websites</h3>
+      <p>Professional websites built from scratch — choose the package that fits your business size and budget.</p>
+      <ul class="service-includes">
+        <li><strong style="color:var(--ocean)">Landing Page</strong> — ₹2,999 &nbsp;·&nbsp; 1 page, mobile-ready</li>
+        <li><strong style="color:var(--ocean)">Business Website</strong> — ₹4,999 &nbsp;·&nbsp; up to 5 pages</li>
+        <li><strong style="color:var(--ocean)">Premium Website</strong> — ₹7,999 &nbsp;·&nbsp; custom design + SEO</li>
+      </ul>
+      <div class="price-tag">
+        From <strong>₹2,999</strong> — one-time
+      </div>
+    </div>
+
+    <!-- Redesign -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+      </div>
+      <h3>Website Redesign</h3>
+      <p>Your site looks outdated? I modernise it so guests trust you and book with confidence.</p>
+      <ul class="service-includes">
+        <li><strong style="color:var(--ocean)">Homepage only</strong> — ₹999</li>
+        <li><strong style="color:var(--ocean)">1-Page redesign</strong> — ₹1,999</li>
+        <li><strong style="color:var(--ocean)">Full redesign</strong> — ₹3,999–5,999</li>
+      </ul>
+      <div class="price-tag">
+        From <strong>₹999</strong> — one-time
+      </div>
+    </div>
+
+    <!-- Fixes & Recovery -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <h3>Fixes &amp; Recovery</h3>
+      <p>Site down, SSL expired, or something broken? I diagnose and fix fast — no panic needed.</p>
+      <ul class="service-includes">
+        <li><strong style="color:var(--ocean)">Site Inspection</strong> — ₹299</li>
+        <li><strong style="color:var(--ocean)">Domain/Hosting renewal</strong> — ₹499</li>
+        <li><strong style="color:var(--ocean)">SSL / DNS Setup</strong> — ₹299–499</li>
+        <li><strong style="color:var(--ocean)">Website Recovery</strong> — ₹999–1,999</li>
+        <li><strong style="color:var(--ocean)">Bug Fixes</strong> — ₹299–999</li>
+      </ul>
+      <div class="price-tag">
+        From <strong>₹299</strong> — per fix
+      </div>
+    </div>
+
+    <!-- Maintenance -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <h3>Annual Maintenance</h3>
+      <p>Keep your site alive and updated year-round. I handle renewals, security, and changes so you don't have to.</p>
+      <ul class="service-includes">
+        <li><strong style="color:var(--ocean)">Basic</strong> — ₹1,499/year &nbsp;·&nbsp; domain + hosting renewal</li>
+        <li><strong style="color:var(--ocean)">Standard</strong> — ₹2,999/year &nbsp;·&nbsp; + updates &amp; support</li>
+        <li><strong style="color:var(--ocean)">Premium</strong> — ₹4,999/year &nbsp;·&nbsp; full priority care</li>
+      </ul>
+      <div class="price-tag">
+        From <strong>₹1,499</strong> — per year
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="why-me" id="about">
+  <div class="section-tag">Why Work With Me</div>
+  <h2 class="section-title">You Get a Dedicated Developer, Not a Big Agency</h2>
+  <p class="section-subtitle">I specialize in hospitality — I understand what resort guests look for when they land on your site.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h4>Resort Focused</h4>
+      <p>I only work with hospitality clients. I know what amenities, galleries, and CTAs drive bookings.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h4>Affordable Pricing</h4>
+      <p>Fair, transparent rates. No hidden agency fees. You always know exactly what you're paying for.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h4>Mobile First</h4>
+      <p>Over 70% of guests browse on phones. Every site I build looks perfect on any screen.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <h4>Fast Turnaround</h4>
+      <p>Most projects are completed in 7–14 days. No waiting months for your website to go live.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <h4>Ongoing Support</h4>
+      <p>I'm available on WhatsApp. If something breaks, I fix it — you don't have to chase anyone.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <h4>Kerala Based</h4>
+      <p>I understand the local tourism market, peak seasons, and what Kerala resort guests expect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="section-tag">Recent Work</div>
+  <h2 class="section-title">Websites That Work Hard for Their Owners</h2>
+  <p class="section-subtitle">A selection of redesigns and new builds for hospitality clients.</p>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <div class="portfolio-img">
+        <div class="portfolio-mock">
+          <div class="mock-bar"></div>
+          <div class="mock-bar short"></div>
+          <div class="mock-bar shorter"></div>
+          <div class="mock-bar"></div>
+          <div class="mock-bar short"></div>
+        </div>
+        <div class="portfolio-overlay">
+          <a href="#contact">View Project</a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <h4>Lakeside Resort — Alleppey</h4>
+        <p>Full redesign with online booking form &amp; gallery overhaul</p>
+        <div class="portfolio-tags">
+          <span class="tag">Redesign</span>
+          <span class="tag">Mobile First</span>
+          <span class="tag">Booking Form</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="portfolio-img portfolio-img-2">
+        <div class="portfolio-mock">
+          <div class="mock-bar shorter"></div>
+          <div class="mock-bar"></div>
+          <div class="mock-bar short"></div>
+          <div class="mock-bar shorter"></div>
+          <div class="mock-bar"></div>
+        </div>
+        <div class="portfolio-overlay">
+          <a href="#contact">View Project</a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <h4>Hilltop Homestay — Munnar</h4>
+        <p>New website built from scratch with WhatsApp booking integration</p>
+        <div class="portfolio-tags">
+          <span class="tag">New Build</span>
+          <span class="tag">WhatsApp</span>
+          <span class="tag">SEO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="portfolio-img portfolio-img-3">
+        <div class="portfolio-mock">
+          <div class="mock-bar short"></div>
+          <div class="mock-bar"></div>
+          <div class="mock-bar shorter"></div>
+          <div class="mock-bar"></div>
+          <div class="mock-bar short"></div>
+        </div>
+        <div class="portfolio-overlay">
+          <a href="#contact">View Project</a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <h4>Beachfront Villa — Kovalam</h4>
+        <p>Annual maintenance + domain renewal + emergency site recovery</p>
+        <div class="portfolio-tags">
+          <span class="tag">Maintenance</span>
+          <span class="tag">Domain</span>
+          <span class="tag">Hosting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-tag">How It Works</div>
+  <h2 class="section-title">Simple Process, Fast Results</h2>
+  <p class="section-subtitle">From first call to live website — I keep it straightforward so you can focus on running your resort.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">01</div>
+      <h4>Free Consultation</h4>
+      <p>We talk on WhatsApp or call. I review your current website (if any) and understand what you need.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">02</div>
+      <h4>Custom Proposal</h4>
+      <p>I send you a clear quote with exactly what's included, the timeline, and the price — no surprises.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">03</div>
+      <h4>Design &amp; Build</h4>
+      <p>I get to work. You see a preview before anything goes live. Your feedback shapes every detail.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">04</div>
+      <h4>Launch &amp; Support</h4>
+      <p>We go live. I train you on how to use it and stay on call for anything that comes up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">Let's Talk About Your Website</h2>
+
+  <div class="contact-inner">
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Resort owner name" required />
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" name="phone" placeholder="+91 88489 57388" required />
+      </div>
+      <div class="form-group">
+        <label>Resort / Business Name</label>
+        <input type="text" name="resort" placeholder="Your resort name" />
+      </div>
+      <div class="form-group">
+        <label>What Do You Need?</label>
+        <select name="service">
+          <option value="">Select a service</option>
+          <option>Website Redesign</option>
+          <option>Annual Maintenance</option>
+          <option>New Website</option>
+          <option>Not Sure — Just Enquiring</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea name="message" placeholder="Tell me about your resort and what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submit-btn">Send Message →</button>
+      <p id="form-success" style="display:none; color:#1A7A6E; font-size:0.9rem; margin-top:0.5rem; padding:0.75rem 1rem; background:#E8F4F0; border-radius:4px; border-left:3px solid #1A7A6E;">
+        ✅ Message sent! I'll reply within 24 hours.
+      </p>
+      <p id="form-error" style="display:none; color:#993C1D; font-size:0.9rem; margin-top:0.5rem; padding:0.75rem 1rem; background:#FAECE7; border-radius:4px; border-left:3px solid #993C1D;">
+        ❌ Something went wrong. Please <a href="https://wa.me/918848957388" style="color:#993C1D;">WhatsApp me</a> directly instead.
+      </p>
+    </form>
+
+    <div class="contact-info">
+      <h3>Prefer to Talk Directly?</h3>
+      <p>I'm available on WhatsApp for a quick call or chat. Most enquiries get a response the same day.</p>
+
+      <div class="contact-links">
+        <a href="tel:+918848957388" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.13 6.13l1.27-.54a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          +91 88489 57388 (WhatsApp)
+        </a>
+        <a href="mailto:sanjeevks149@gmail.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          sanjeevks149@gmail.com
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          Kasaragod, Kerala, India
+        </a>
+      </div>
+
+      <div class="guarantee">
+        <p><strong>My Promise to You:</strong> If you're not happy with the initial design, I'll revise it — completely free. No arguments, no extra charge. Your satisfaction is my priority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Sanjeev</span> · Web Development for Hospitality Businesses · Kasaragod, Kerala</p>
+</footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/918848957388?text=Hi%20Sanjeev%2C%20I%20need%20help%20with%20my%20resort%20website"
+   id="wa-float"
+   target="_blank"
+   title="Chat on WhatsApp"
+   style="
+     position:fixed; bottom:24px; right:24px; z-index:9999;
+     width:60px; height:60px; border-radius:50%;
+     background:#25D366; display:flex; align-items:center;
+     justify-content:center; box-shadow:0 4px 16px rgba(37,211,102,0.45);
+     text-decoration:none; transition:transform 0.2s, box-shadow 0.2s;
+   "
+   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 24px rgba(37,211,102,0.6)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(37,211,102,0.45)'">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- WhatsApp pulse ring animation -->
+<style>
+  #wa-float::before {
+    content: '';
+    position: absolute;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    animation: waPulse 2s ease-out infinite;
+    z-index: -1;
+  }
+  @keyframes waPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+</style>
+
+<script>
+  const FORMSPREE_ID = 'mykvbokz'; // ← Replace with your Formspree form ID
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const success = document.getElementById('form-success');
+    const error = document.getElementById('form-error');
+    success.style.display = 'none';
+    error.style.display = 'none';
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        success.style.display = 'block';
+        this.reset();
+      } else {
+        error.style.display = 'block';
+      }
+    } catch (err) {
+      error.style.display = 'block';
+    }
+
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+  });
+</script>
+
+</body>
+</html>
